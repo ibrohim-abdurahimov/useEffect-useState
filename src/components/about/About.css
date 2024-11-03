@@ -1,0 +1,35 @@
+.about{
+    margin-top: 123.73px;
+}
+.about__wrapper{
+    display: flex;
+    gap: 97px;
+}
+.about__img,
+.about__text{
+    width: calc(50% - 97px);
+}
+.about__img{
+    height: 500px;  
+}
+.about__text{
+    margin-top: 93.27px;
+    margin-bottom: 92px;
+
+}
+.about__subtitle{
+    font-weight: 500;
+    font-size: 16px;
+    color: #DC780B;
+    letter-spacing: 3px;
+}
+.about__title{
+    margin-top: 10px;
+    font-family: Philosopher;
+    font-size: 31.25px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.about__desc{
+    margin-bottom: 30px;
+}

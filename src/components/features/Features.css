@@ -1,0 +1,50 @@
+.features{
+    margin-top: 115px;
+}
+.features__subtitle{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #DC780B;
+    letter-spacing: 3px;
+}
+.features__title{
+    font-family: Philosopher;
+    font-size: 31.25;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 7px;
+}
+.features__wrapper{
+    display: flex;
+    gap: 90px;
+    margin-top: 44px;
+}
+.features__card{
+    width: calc(33.33% - 60px);
+    
+}
+.features__card-img{
+    width: 88px;
+    height: 88px;
+    margin: auto;
+    padding: 22px;
+    border-radius: 50%;
+    background-color: hsl(71, 26%, 87%);
+    transition: .3s;
+}
+.features__card-img:hover{
+    transform: translateY(-20px) scale(1.1);
+}
+.features__card-title{
+    font-family: Philosopher;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 33px;
+}
+.features__card-desc{
+    margin-top: 15px;
+    max-width: 300px;
+    text-align: center;
+}
