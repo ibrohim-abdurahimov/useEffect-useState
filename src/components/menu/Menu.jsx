@@ -4,12 +4,18 @@ import axios from 'axios'
 import { IoStar } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
 import Loading from '../loading/Loading';
+import Aos from 'aos';
+import 'aos/dist/aos.css'
 
 const BASE_URL = "https://dummyjson.com"
 
 const Menu = () => {
     const [products, setProducts] = useState(null)
     const [loading, setLoading] = useState(false)
+    
+    useEffect(()=>{
+        Aos.init()
+    })
 
     useEffect(() => {
         setLoading(true)
@@ -20,7 +26,7 @@ const Menu = () => {
     }, [])
 
     const productItem = products?.map((pro) => (
-        <div key={pro.id} className="menu__card">
+        <div data-aos="flip-down" key={pro.id} className="menu__card">
             <div className="menu__img">
                 <img src={pro.images[0]} alt="" />
             </div>
