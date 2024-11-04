@@ -18,6 +18,33 @@
     max-width: 748px;
     margin-top: 25px;
 }
+.menu__category{
+    margin-top: 30px;
+    display: flex;
+    overflow: auto;
+    gap: 20px;
+    cursor: pointer;
+}
+.menu__category::-webkit-scrollbar{
+    width: 0;
+}
+.menu__item{
+    border-radius: 5px;
+    font-size: 18px;
+    color: #fff;
+    white-space: nowrap;
+    padding: 3px 16px;
+    background-color: #DC780B;
+}
+.active{
+    border: 1px solid #DC780B;
+    padding: 3px 16px;
+    font-size: 18px;
+    white-space: nowrap;
+    border-radius: 5px;
+    color: #DC780B;
+    background-color: #fff;
+}
 .menu__wrapper{
     margin-top: 60px;
     margin-bottom: 50px;
@@ -70,9 +97,14 @@
     padding: 4px 6px;
 }
 .menu__btn{
-    margin: auto;
-}
-.menu__btn button{
     display: block;
     margin: auto;
+    padding: 10px 100px;
+    font-size: 18px;
+    background-color: #DC780B;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    margin-bottom: 40px;
+    cursor: pointer;
 }

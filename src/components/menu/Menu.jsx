@@ -1,31 +1,48 @@
 import React, { useEffect, useState } from 'react'
 import "./Menu.css"
-import axios from 'axios'
+import axios from '../../api'
 import { IoStar } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
 import Loading from '../loading/Loading';
 import Aos from 'aos';
 import 'aos/dist/aos.css'
+import { useFetch } from '../../hooks/useFetch';
 
-const BASE_URL = "https://dummyjson.com"
+
 
 const Menu = () => {
-    const [products, setProducts] = useState(null)
-    const [loading, setLoading] = useState(false)
-    
-    useEffect(()=>{
-        Aos.init()
-    })
+    // const [products, setProducts] = useState(null)
+    // const [loading, setLoading] = useState(false)
+    const count = 3
+    const [category, setCategory] = useState("/")
+    const [offset, setOffset] = useState(1)
+    const { data, error, loading } = useFetch(`/products${category}`, { limit: offset * count }, [offset, category])
+    const { data: categories } = useFetch("/products/category-list")
 
+    useEffect(()=>{
+        setOffset(1)
+    }, [category])
     useEffect(() => {
-        setLoading(true)
-        axios
-            .get(`${BASE_URL}/products`)
-            .then(res => setProducts(res.data.products))
-            .finally(() => setLoading(false))
+        Aos.init()
     }, [])
 
-    const productItem = products?.map((pro) => (
+    // useEffect(() => {
+    //     setLoading(true)
+    //     axios
+    //         .get(`/products`, {
+    //             params: {
+    //                 limit: offset * 3
+    //             }
+    //         })
+    //         .then(res => setProducts(res.data.products))
+    //         .finally(() => setLoading(false))
+    // }, [offset])
+
+    // useEffect(()=>{
+    //     axios.get(`/products/category-list`)
+    // })
+
+    const productItem = data?.products?.map((pro) => (
         <div data-aos="flip-down" key={pro.id} className="menu__card">
             <div className="menu__img">
                 <img src={pro.images[0]} alt="" />
@@ -50,6 +67,11 @@ const Menu = () => {
             </div>
         </div>
     ))
+    const categoryItem = categories?.map((item) => (
+        <li className={`${`/category/${item}`=== category? "active" : "menu__item"}`} onClick={() => setCategory(`/category/${item}`)} key={item}>
+            {item}
+        </li>
+    ))
     return (
         <section className='menu'>
             <div className="container">
@@ -60,15 +82,21 @@ const Menu = () => {
                 <p className="menu__dec">
                     There are many things are needed to start the Fast Food Business. You need not only Just Food Stalls with Persons but also specialized equipment, Skills to manage Customers.
                 </p>
-                <div className='loading'>
-                    {loading && <Loading/>}
+                
+                <div className="menu__category">
+                    <li className={`${`/`=== category? "active" : "menu__item"}`} onClick={() => setCategory("/")}>All</li>
+                    {categoryItem}
                 </div>
+                {loading && <Loading count={count}/>}
                 <div className="menu__wrapper">
                     {productItem}
-                    <div className="menu__btn">
                 </div>
-                    <button className="btn">Learn More</button>
-                </div>
+                {
+                    offset * count < data?.total &&
+                    <div>
+                        <button disabled={loading} onClick={() => setOffset(p => p + 1)} className="menu__btn">{loading ? "Loading..." : "See More"}</button>
+                    </div>
+                }
             </div>
         </section>
     )

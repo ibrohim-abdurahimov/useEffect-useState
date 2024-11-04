@@ -1,4 +1,4 @@
-.lds-spinner,
+/* .lds-spinner,
 .lds-spinner div,
 .lds-spinner div:after {
   box-sizing: border-box;
@@ -80,4 +80,45 @@
   100% {
     opacity: 0;
   }
+} */
+.loading {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.card {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius:0 0 10px 10px;
+  padding: 5px 10px 10px 10px;
+  width: 360px;
+  padding: 12px;
+}
+
+.img {
+  background-color: rgba(157, 157, 209, 0.911);
+  height: 300px;
+  margin-bottom: 20px;
+}
+.body{
+  margin-top: 10px;
+  display: flex;
+  gap: 25px;
+  justify-content: space-between;
+}
+.title {
+  padding: 10px;
+  background-color: rgba(157, 157, 209, 0.911);
+  width: 100%;
+}
+.price{
+  padding: 10px;
+  background-color: rgba(157, 157, 209, 0.911);
+  width: 40px;
+}
+.star{
+  padding: 10px;
+  background-color: rgba(157, 157, 209, 0.911);
+  width: 80px;
 }
